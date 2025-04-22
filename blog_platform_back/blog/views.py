@@ -17,6 +17,7 @@ def get_all_posts(request):
 
 #FBV - создать пост
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_post(request):
     data = request.data.copy()
     data['author'] = request.user.id 
