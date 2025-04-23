@@ -6,7 +6,15 @@ from rest_framework import status, generics
 from django.contrib.auth.models import User 
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Your code is working")
+
 # Create your views here.
+@api_view(['GET'])
+def api_root(request):
+    return Response({"message": "API is working"})
 
 #FBV - получить все посты
 @api_view(['GET'])
@@ -24,7 +32,7 @@ def create_post(request):
     serializer = PostSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
-        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)#serializer.data, status=status.HTTP_202_ACCEPTED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 #Получить, редактировать, удалить 
