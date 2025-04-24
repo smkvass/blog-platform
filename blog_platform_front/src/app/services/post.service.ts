@@ -1,4 +1,3 @@
-// src/app/services/post.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -6,18 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class PostService {
-  private apiUrl = 'http://localhost:8000/api/blog/';
+export class PostService {  // <-- ОБЯЗАТЕЛЬНО такое имя!
+  private apiUrl = 'http://localhost:8000/api/posts/';
 
   constructor(private http: HttpClient) {}
 
-  // Получить все посты
-  getPosts(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  getPosts(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-  // Создать пост
-  createPost(postData: any): Observable<any> {
-    return this.http.post(this.apiUrl, postData);
+  createPost(postData: { title: string; content: string }): Observable<any> {
+    return this.http.post<any>(this.apiUrl, postData);
   }
 }

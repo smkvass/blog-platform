@@ -1,1 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #1e90ff;   
+    --accent-color: #f9c6d0;    
+    --bg-color: #ffffff;        
+    --text-color: #333333;      
+    --border-radius: 8px;
+    --transition: 0.3s ease;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+ 
+  h1, h2, h3 {
+    color: var(--primary-color);
+  }
+  
+
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  button:hover {
+    background-color: #1565c0;
+  }
+  
+  /* Ссылки */
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  a:hover {
+    color: var(--accent-color);
+  }
+  
+ 
+  .card {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  }
+  
+ 
+  .navbar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar a {
+    color: white;
+    margin-left: 16px;
+  }
+  
+  .navbar a:hover {
+    color: var(--accent-color);
+  }
+  
+  /* Формы */
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  
+  input:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+  

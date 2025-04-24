@@ -1,0 +1,36 @@
+<nav class="navbar">
+    <div class="left">
+      <!-- Логотип / Название -->
+      <a routerLink="/" class="logo">
+        Blog Platform
+      </a>
+  
+      <!-- Только если пользователь залогинен -->
+      <a *ngIf="userName" routerLink="/posts" title="Posts">
+        Posts
+      </a>
+  
+      <a *ngIf="userName" routerLink="/create" title="New Post">
+        New Post
+      </a>
+    </div>
+  
+    <div class="right">
+      <!-- Приветствие и кнопка выхода -->
+      <span *ngIf="userName" class="welcome">Hi, {{ userName }}</span>
+  
+      <button *ngIf="userName" (click)="logout()" title="Logout">
+        Logout
+      </button>
+  
+      <!-- Если пользователь НЕ залогинен -->
+      <a *ngIf="!userName" routerLink="/login" title="Login">
+        Login
+      </a>
+  
+      <a *ngIf="!userName" routerLink="/signup" title="Sign Up">
+        Sign Up
+      </a>
+    </div>
+  </nav>
+  

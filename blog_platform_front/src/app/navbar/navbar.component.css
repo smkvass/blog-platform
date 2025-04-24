@@ -1,0 +1,40 @@
+.navbar {
+    padding: 1rem;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .left a,
+  .right a,
+  .welcome,
+  button {
+    color: #4a90e2; /* Нежно-синий */
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .left a:hover,
+  .right a:hover,
+  button:hover {
+    color: #357ABD; /* Чуть темнее при наведении */
+    text-decoration: underline;
+  }
+  
+  button {
+    padding: 6px 12px;
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  

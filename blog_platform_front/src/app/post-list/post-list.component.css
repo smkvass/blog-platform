@@ -1,0 +1,101 @@
+/* Основной контейнер для всего контента */
+.container {
+    min-height: 100vh; /* Минимальная высота окна браузера */
+    display: flex;
+    flex-direction: column; /* Элементы внутри будут располагаться по вертикали */
+    justify-content: flex-start; /* Центрируем все содержимое по вертикали, но не до конца */
+    align-items: center; /* Центрируем по горизонтали */
+    background-color: #f5f5f5; /* Фон страницы */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Контейнер для списка постов */
+  .post-list {
+    margin: 20px;
+    padding: 20px;
+    width: 800px; /* Устанавливаем фиксированную ширину */
+    background-color: #fff;
+    border-radius: 12px; /* Радиус скругления */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Центрируем содержимое по вертикали */
+    align-items: center; /* Центрируем содержимое по горизонтали */
+  }
+  
+  /* Элементы поста */
+  .post-item {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .post-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .post-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .post-content {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* Форма для создания нового поста */
+  .create-post {
+    margin-top: 40px;
+    width: 800px; /* Устанавливаем фиксированную ширину */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Поля ввода и кнопка */
+  .input-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+  }
+  
+  .create-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Стиль для когда постов нет */
+  .no-posts {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+  }
+  

@@ -1,27 +1,60 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './login.component.html',
+  styleUrls:['./login.component.css']
 })
 export class LoginComponent {
   email = '';
   password = '';
-  error = '';
+  isLogin = true;
+  errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onLogin() {
-    this.authService.login(this.email, this.password).subscribe({
-      next: (response: any) => {
-        this.authService.saveToken(response.token); // assuming response has { token: "..." }
+  login() {
+    this.errorMessage = '';
+    this.authService.login({ email: this.email, password: this.password }).subscribe({
+      next: (response) => {
+        this.authService.saveToken(response.token);
         this.router.navigate(['/posts']);
       },
-      error: (err) => {
-        this.error = 'Неверный email или пароль';
+      error: () => {
+        this.errorMessage = "We don't have such account";
       }
     });
+  }
+
+  signUp() {
+    this.authService.register({ email: this.email, password: this.password }).subscribe({
+      next: (response) => {
+        alert('Your registration is successful!');
+        this.authService.saveToken(response.token);
+        this.router.navigate(['/posts']);
+      },
+      error: (error) => {
+        if (error.error?.error === 'User already exists') {
+          alert('You have already registered!');
+        } else {
+          alert('Registration failed!');
+        }
+      }
+    });
+  }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+  
+  toggleForm() {
+    this.errorMessage = '';
+    this.isLogin = !this.isLogin;
   }
 }

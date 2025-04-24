@@ -1,14 +1,19 @@
-<div class="login-container">
-  <h2>Вход</h2>
-  <form (ngSubmit)="onLogin()">
-    <label>Email:</label>
-    <input type="email" [(ngModel)]="email" name="email" required>
+<div class="container">
+  <div *ngIf="isLogin; else signUpTemplate">
+    <h2>Blog Platform</h2>
+    <input [(ngModel)]="email" placeholder="Email" />
+    <input type="password" [(ngModel)]="password" placeholder="Password" />
+    <button (click)="login()">Log In</button>
+    <p *ngIf="errorMessage" style="color: red">{{ errorMessage }}</p>
+    <p>Don't have an account? <a (click)="toggleForm()" style="cursor: pointer">Sign Up</a></p>
+  </div>
 
-    <label>Пароль:</label>
-    <input type="password" [(ngModel)]="password" name="password" required>
-
-    <button type="submit">Войти</button>
-  </form>
-
-  <p *ngIf="error" style="color:red">{{ error }}</p>
+  <ng-template #signUpTemplate>
+    <h2>Sign Up</h2>
+    <input [(ngModel)]="email" placeholder="Email" />
+    <input type="password" [(ngModel)]="password" placeholder="Password" />
+    <button (click)="signUp()">Sign Up</button>
+    <p *ngIf="errorMessage" style="color: red">{{ errorMessage }}</p>
+    <p>Already have an account? <a (click)="toggleForm()" style="cursor: pointer">Log In</a></p>
+  </ng-template>
 </div>

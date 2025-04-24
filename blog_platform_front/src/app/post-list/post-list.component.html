@@ -1,15 +1,25 @@
-<div>
-    <h2>Posts</h2>
-    <div>
-      <input [(ngModel)]="title" placeholder="Post title" />
-      <textarea [(ngModel)]="content" placeholder="Post content"></textarea>
-      <button (click)="createPost()">Create Post</button>
+<div class="container">
+  <!-- Список постов -->
+  <div *ngIf="posts.length > 0" class="post-list">
+    <div *ngFor="let post of posts" class="post-item">
+      <h3 class="post-title">{{ post.title }}</h3>
+      <p class="post-content">{{ post.content }}</p>
     </div>
-    <ul>
-      <li *ngFor="let post of posts">
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.content }}</p>
-      </li>
-    </ul>
+  </div>
+
+  <!-- Если нет постов -->
+  <div *ngIf="posts.length === 0" class="no-posts">
+    <p>No posts available</p>
+  </div>
+
+
+  <div class="create-post">
+    <input [(ngModel)]="title" placeholder="Post title" class="input-field"/>
+    <textarea [(ngModel)]="content" placeholder="Post content" class="input-field"></textarea>
+    <button (click)="createPost()" class="create-button">Create Post</button>
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
   </div>
   
+</div>

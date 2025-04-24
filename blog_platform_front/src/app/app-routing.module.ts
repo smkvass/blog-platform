@@ -1,17 +1,16 @@
+// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { PostListComponent } from './post-list/post-list.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'posts', component: PostListComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: 'login', component: AuthComponent },
+  { path: 'register', component: AuthComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // если нужно
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -35,7 +35,7 @@ def create_post(request):
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)#serializer.data, status=status.HTTP_202_ACCEPTED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-#Получить, редактировать, удалить 
+
 class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
