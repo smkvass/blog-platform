@@ -3,18 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class PostService {  // <-- ОБЯЗАТЕЛЬНО такое имя!
-  private apiUrl = 'http://localhost:8000/api/posts/';
+export class PostService {
 
-  constructor(private http: HttpClient) {}
+  private apiUrl = 'http://localhost:8000/api/posts/';  // URL для отправки запросов
 
-  getPosts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  constructor(private http: HttpClient) { }
+
+  // Метод для получения всех постов
+  getPosts(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
   }
 
-  createPost(postData: { title: string; content: string }): Observable<any> {
-    return this.http.post<any>(this.apiUrl, postData);
+  // Метод для создания поста с использованием FormData
+  createPost(formData: FormData): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'create/', formData);
   }
 }

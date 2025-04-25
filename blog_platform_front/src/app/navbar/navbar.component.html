@@ -1,36 +1,26 @@
 <nav class="navbar">
-    <div class="left">
-      <!-- Логотип / Название -->
-      <a routerLink="/" class="logo">
-        Blog Platform
-      </a>
-  
-      <!-- Только если пользователь залогинен -->
-      <a *ngIf="userName" routerLink="/posts" title="Posts">
-        Posts
-      </a>
-  
-      <a *ngIf="userName" routerLink="/create" title="New Post">
-        New Post
-      </a>
-    </div>
-  
-    <div class="right">
-      <!-- Приветствие и кнопка выхода -->
-      <span *ngIf="userName" class="welcome">Hi, {{ userName }}</span>
-  
-      <button *ngIf="userName" (click)="logout()" title="Logout">
-        Logout
-      </button>
-  
-      <!-- Если пользователь НЕ залогинен -->
-      <a *ngIf="!userName" routerLink="/login" title="Login">
-        Login
-      </a>
-  
-      <a *ngIf="!userName" routerLink="/signup" title="Sign Up">
-        Sign Up
-      </a>
-    </div>
-  </nav>
-  
+  <div class="left">
+    <a routerLink="/" class="logo">Blog Platform</a>
+    <a *ngIf="userName" routerLink="/posts">Posts</a>
+    <a *ngIf="userName" routerLink="/create">New Post</a>
+  </div>
+
+  <div class="right">
+    
+    <ng-container *ngIf="!userName; else loggedIn">
+      <div class="dropdown">
+        <button class="account-btn">Account ⬇</button>
+        <div class="dropdown-menu">
+          <a routerLink="/login">Login</a>
+          <a routerLink="/signup">Sign Up</a>
+        </div>
+      </div>
+    </ng-container>
+
+    
+    <ng-template #loggedIn>
+      <span class="welcome">Hi, {{ userName }}</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </ng-template>
+  </div>
+</nav>

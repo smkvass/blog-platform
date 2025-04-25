@@ -1,40 +1,80 @@
 .navbar {
-    padding: 1rem;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .left a,
-  .right a,
-  .welcome,
-  button {
-    color: #4a90e2; /* Нежно-синий */
-    text-decoration: none;
-    font-weight: 500;
-    margin: 0 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .left a:hover,
-  .right a:hover,
-  button:hover {
-    color: #357ABD; /* Чуть темнее при наведении */
-    text-decoration: underline;
-  }
-  
-  button {
-    padding: 6px 12px;
-  }
-  
-  .logo {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+}
+
+.left, .right {
+  display: flex;
+  align-items: center; 
+}
+
+.left a,
+.right a,
+.account-btn,
+.welcome {
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  color: black; /* <-- устанавливаем черный цвет */
+}
+
+.welcome {
+  color: black;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.account-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  min-width: 120px;
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black; /* <-- черный цвет ссылок */
+}
+
+.dropdown-menu a:hover {
+  background-color: #eee;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  background-color: #001f3f;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:hover {
+  background-color: #003366;
+  transform: scale(1.05);
+}

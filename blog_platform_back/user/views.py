@@ -28,8 +28,15 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
         data.update({'email': self.user.email, 'name': self.user.name})
         return data
+    
 class LoginView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+    
+    def post(self, request, *args, **kwargs):
+        print("Login attempt with data:", request.data)
+        response = super().post(request, *args, **kwargs)
+        print("Response from login:", response.data)
+        return response
 class UserView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -54,7 +61,7 @@ class LogoutView(APIView):
         try:
             refresh_token = request.data["refresh"]
             token = RefreshToken(refresh_token)
-            token.blacklist()  # если blacklist enabled
+            token.blacklist() 
             return Response({"message": "Successfully logged out"}, status=status.HTTP_205_RESET_CONTENT)
         except Exception:
             return Response({"error": "Invalid refresh token"}, status=status.HTTP_400_BAD_REQUEST)

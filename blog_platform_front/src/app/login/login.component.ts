@@ -23,20 +23,24 @@ export class LoginComponent {
     this.errorMessage = '';
     this.authService.login({ email: this.email, password: this.password }).subscribe({
       next: (response) => {
-        this.authService.saveToken(response.token);
+        this.authService.saveTokens(response.access, response.refresh);
+        this.authService.setUserName(response.name); 
         this.router.navigate(['/posts']);
       },
-      error: () => {
+      error: (error) => {
+        console.error("Login failed, error:", error);
         this.errorMessage = "We don't have such account";
       }
     });
+    
   }
+  
 
   signUp() {
     this.authService.register({ email: this.email, password: this.password }).subscribe({
       next: (response) => {
         alert('Your registration is successful!');
-        this.authService.saveToken(response.token);
+        this.authService.saveTokens(response.token, response.refresh);
         this.router.navigate(['/posts']);
       },
       error: (error) => {

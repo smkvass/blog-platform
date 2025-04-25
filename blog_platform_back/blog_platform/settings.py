@@ -139,3 +139,5 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'user.User'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
